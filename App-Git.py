@@ -56,10 +56,10 @@ def main():
     # Filtrando os dados
     dados = data[data['MEDV'].between(left=faixa_valores[0], right=faixa_valores[1])]
 
-    # Plot a distribuição dos dados usando st.pyplot
+    # Plot a distribuição dos dados usando Matplotlib
     st.subheader("Distribuição de Preços")
     plt.hist(dados['MEDV'], bins=100)
-    st.pyplot(plt)
+    st.pyplot()  # Exibe o gráfico Matplotlib
 
     st.sidebar.subheader("Defina os atributos do imóvel para predição")
 
