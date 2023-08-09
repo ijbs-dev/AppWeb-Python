@@ -1,4 +1,3 @@
-pip list
 pip install --upgrade streamlit
 pip install --upgrade plotly
 
