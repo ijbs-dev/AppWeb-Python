@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
+import plotly.express as px
 from sklearn.ensemble import RandomForestRegressor
 
 # Funcao para carregar o dataset
@@ -56,12 +56,11 @@ def main():
     # Filtrando os dados
     dados = data[data['MEDV'].between(left=faixa_valores[0], right=faixa_valores[1])]
 
-    # Plot a distribuição dos dados usando Matplotlib
-    st.subheader("Distribuição de Preços")
-    plt.hist(dados['MEDV'], bins=100)
-    plt.xlabel("MEDV")
-    plt.ylabel("Total Imóveis")
-    st.pyplot()  # Exibe o gráfico Matplotlib
+    # Plot a distribuição dos dados
+    f = px.histogram(dados, x="MEDV", nbins=100, title="Distribuição de Preços")
+    f.update_xaxes(title="MEDV")
+    f.update_yaxes(title="Total Imóveis")
+    st.plotly_chart(f)
 
     st.sidebar.subheader("Defina os atributos do imovel para predição")
 
